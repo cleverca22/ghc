@@ -42,6 +42,10 @@ Library
         UnliftedFFITypes
 
     build-depends: rts == 1.0.*
+    
+    -- Base uses libm functions. ld.bfd links libm implicitly when necessary.
+    -- Other linkers, like gold, don't, so we have to declare it explicitly.
+    extra-libraries: m
 
     exposed-modules:
         GHC.CString
